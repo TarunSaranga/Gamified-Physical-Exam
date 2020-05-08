@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <title>Gamified Physical Examination</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src="https://apps.hdap.gatech.edu/gamified-physical-examination/index.js" type="application/javascript"></script>
+    <link href="https://apps.hdap.gatech.edu/gamified-physical-examination/index.css" media="screen" rel="stylesheet"/>
+</head>
+<body>
+    <div class="overlay">
+
+    </div>
+    <header>
+        <h1>Select Examination</h1>
+    </header>
+    <div style="height: 88%">
+        <div class="column" style="width: 48%; overflow-y: scroll;">
+            <div>
+                <h2>Patient Background</h2>
+                <p id="patient_bg">
+                    Julie Withers, aged 17 years, attends your clinic for a pre-employment medical. She appears rushed and flustered and says she is upset because the bus into town was running late so she had to rush to the medical centre, and she has just realised that she must have dropped her purse somewhere along theway.
+                    <br><br>
+                    She has no medical or surgical history of note, is on no medication (prescribed or over-the-counter) and your brief systems review does not reveal any potential issues. As you begin your physical examination you note her BP is 168/130 (while lying down).
+                </p>
+            </div>
+
+            <h2>Completed Examination</h2>
+            <table id="exam_list" class="exam_list" border="1">
+                <colgroup>
+                    <!-- <col style="width: 50%">
+                    <col style="width: 35%">
+                    <col style="width: 15%"> -->
+                </colgroup>
+                <thead>
+                    <th>Exam</th>
+                    <th>Code</th>
+                    <th>Result</th>
+                    <th>Unit</th>
+                    <th>Action</th>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+
+            <div class="row" style="padding: 0px !important;">
+                <button id="submit_btn" type="submit">Submit</button>
+                <h2 id="timer" style="margin-top: 15px; margin-left: 20px;">Game Starting</h2>
+            </div>
+
+            <div id="submit_popup" class="popup">
+                <h2 id="field_score">Total Score: </h2>
+                <h2 id="field_duration">Total Duration: </h2>
+                <button id="end_btn" type="submit" onclick="endGame()">End Game</button>
+            </div>
+
+        </div>
+
+        <div class="column" style="width: 48%; display:inline">
+            <h2>Select Examinations Below:</h2>
+
+            <div class="column">
+                <input id="slider" onchange="layerchange()" class="body_layer" list="layers" type="range" min="1" max="6" value="6" orient="vertical"></input>
+                <div class="column layers" style="padding: 0% !important">
+                    <p>Body / Vitals</p>
+                    <p>Cardiovascular</p>
+                    <p>Muscular</p>
+                    <p>Digestive</p>
+                    <p>Skeletal</p>
+                    <p>Nervous</p>
+                </div>
+            </div>
+
+            <div class="column" style="width: 225px; height:422px">
+                <img id="human" src="https://apps.hdap.gatech.edu/gamified-physical-examination/bodies/body_6.png"></img>
+            </div>
+        </div>
+
+        <div id="popup" class="popup" style="width: 300px;">
+            <form>
+                <p>Select Examination</p>
+                <label for="input_system">System</label>
+                <select id="input_system" onchange="changeSystem()">
+                    <option value="NA">--</option>
+                    <option value="0">Vital Signs</option>
+                    <option value="1">Cardiovascular</option>
+                    <option value="2">Eyes</option>
+                    <option value="3">Body</option>
+                </select>
+                <br>
+                <label for="input_exam">Exam</label>
+                <select id="input_exam">
+                </select>
+                <br>
+                <label for="input_result">Result</label>
+                <input id="input_result" type="text">
+                <br>
+                <input type="submit" value="Save">
+                <input type="button" value="Close" id="popupclose">
+            </form>
+        </div>
+
+    </div>
+    <footer>
+        <p>Georgia Institute of Technology - CS6440 - Spring 2020 - Team 35</p>
+    </footer>
+</body>
+</html>

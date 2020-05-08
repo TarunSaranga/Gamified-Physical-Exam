@@ -1,0 +1,125 @@
+html {
+    background: #3A3A3A;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    width: 800px;
+    height: 600px;
+    background: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+header, footer {
+    background-color: #135E91;
+    color: #FFFFFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header {
+    height: 8%;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+}
+
+footer {
+    height: 4%;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    font-size: 0.8em;
+}
+
+div {
+    padding-left: 1%;
+    padding-right: 1%;
+}
+
+h2 {
+    font-size: 1.2em;
+}
+
+button {
+    background-color: #135E91;
+    color: #FFFFFF;
+    font-size: 1.2em;
+    margin-top: 10px;
+    height: 30px;
+}
+
+label {
+    display: inline-block;
+    width: 60px;
+    height: 20px;
+}
+
+.column {
+    height: 100%;
+    float: left;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.body_layer {
+    -webkit-appearance: slider-vertical;
+    writing-mode: bt-lr;
+    height: 422px;
+    width: 20px;
+}
+
+.layers p {
+    text-align: right;
+    width: 107px;
+    height: 83px;
+    margin: -1px 0 0 0;
+}
+
+.popup {
+    background: #FFFFFF;
+    padding: 10px;
+    border: 1px solid black;
+}
+
+#submit_popup {
+    z-index: 10;
+}
+
+.overlay {
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    background-color: #000000;
+    opacity: 0.5;
+    display: none;
+}
+
+.exam_list {
+    width: 100%;
+    border: 1px solid black;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+.col_exam {
+    text-align: left;
+}
+
+.col_measure {
+    text-align: right;
+}
+
+.col_unit {
+    text-align: left;
+}
+
+.ui-dialog-titlebar-close {
+    visibility: hidden;
+}

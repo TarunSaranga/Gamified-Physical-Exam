@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!-- Meta Tags -->
+    <!-- <meta http-equiv="X-UA-Compatible" content="ie=edge"> -->
+
+    <!-- Stylesheet Docs -->
+    <link rel="stylesheet" href="index.css">
+    <script type="text/javascript" src="main.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+
+    <script>
+    $( function() {
+        var popup, form, pos;
+
+        function addUser() {
+            $( "#exam_list tbody" ).append( "<tr>" +
+            "<td>" + $("#available_exams").val() + "</td>" +
+            "<td>" + $("#measurement").val() + "</td>" +
+            "<td>" + $("#unit").val() + "</td>" +
+            "</tr>" );
+            popup.dialog( "close" );
+        }
+
+        popup = $( "#popup" ).dialog({
+            autoOpen: false,
+            modal: true,
+            close: function() {
+                form[ 0 ].reset();
+            }
+        });
+
+        form = popup.find( "form" ).on( "submit", function(e) {
+            e.preventDefault();
+            addUser();
+        });
+
+        $( "#human" ).on( "click", function(e) {
+            pos = {
+                my: "center",
+                at: "center",
+                of: e
+            }
+
+            popup.dialog("option", "position", pos).dialog( "open" );
+        });
+
+        $("#popupclose").on("click", function() {
+            popup.dialog("close");
+        });
+
+        popup.bind("clickoutside", function () {
+            console.log("I'm here!");
+            popup.dialog("close");
+        })
+    } );
+</script>
+
+<style>
+html {
+    background: #3A3A3A;
+}
+
+body {
+    width: 800px;
+    height: 600px;
+    background: #FFFFFF;
+}
+
+header {
+    height: 40px;
+}
+
+.column {
+    height: inherit;
+    float: left;;
+}
+
+.body_layer {
+    -webkit-appearance: slider-vertical;
+    writing-mode: bt-lr;
+    height: 422px;
+    width: 20px;
+}
+
+.layers p {
+    text-align: right;
+    width: 100px;
+    height: 84px;
+    margin: -2px 0 0 0;
+}
+
+.popup {
+    background: #FFFFFF;
+    padding: 10px;
+    border: 1px solid black;
+}
+
+.exam_list {
+    width: 100%;
+    border: 1px solid black;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+.col_exam {
+    text-align: left;
+}
+
+.col_measure {
+    text-align: right;
+}
+
+.col_unit {
+    text-align: left;
+}
+
+.ui-dialog-titlebar-close {
+    visibility: hidden;
+}
+</style>
+
+</head>
+<body>
+    <header>
+        <p>Select Examniations</p>
+    </header>
+    <div id="horizontal">
+        <div class="column" style="width: 50%">
+            <div id="patient_bg">
+                <header>Patient Background</header>
+            </div>
+
+            <div style="padding: 10px">
+                <p>Completed Examniation</p>
+                <table id="exam_list" class="exam_list">
+                    <colgroup>
+                        <col style="width: 50%">
+                        <col style="width: 35%">
+                        <col style="width: 15%">
+                    </colgroup>
+                    <thead>
+                        <th>Examinations</th>
+                        <th>Measurement</th>
+                        <th>Unit</th>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="column" style="width: 50%; display:inline">
+            <header>Select Appropriate Examinations Below:</header>
+
+            <div class="column">
+                <input id="slider" onchange="layerchange()" class="body_layer" list="layers" type="range" min="1" max="6" value="6" orient="vertical"></input>
+                <div class="column layers">
+                    <p>Skin</p>
+                    <p>Circulatory</p>
+                    <p>Muscular</p>
+                    <p>Digestive</p>
+                    <p>Skeletal</p>
+                    <p>Nervous</p>
+                </div>
+            </div>
+
+            <div class="column" style="width: 225px; height:422px">
+                <img id="human" src="bodies/body_6.png"></img>
+
+                <div id="popup" class="popup">
+                    <form>
+                        <p>Select Examniation</p>
+                        <select id="available_exams">
+                            <option value="1">Exam #1</option>
+                            <option value="2">Exam #2</option>
+                            <option value="3">Exam #3</option>
+                            <option value="4">Exam #4</option>
+                        </select>
+                        <br>
+                        <label for="measurement">Measurement</label>
+                        <input id="measurement" type="text">
+                        <br>
+                        <label for="unit">Unit</label>
+                        <input id="unit" type="text">
+                        <br>
+                        <input type="submit">
+                        <input type="button" value="Close" id="popupclose">
+                    </form>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>	&copy; 2020 Team 35 - ZDoggMD</p>
+    </footer>
+</body>
+</html>
